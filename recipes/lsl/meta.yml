@@ -1,0 +1,59 @@
+i{% set name = "lsl" %}
+{% set version = "2.1.0" %}
+{% set sha256 = "adcdb4dcb49a79023851b8a16a791d6cdf4cad3fa616c95824b9f9344920bcdf" %}
+
+package:
+  name: {{ name }}
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: python setup.py install
+  skip: true  # [win or py3k]
+
+requirements:
+  build:
+    - aipy >=3.0.1
+    - astropy >=3.0
+    - numpy >=1.7
+    - pyephem >=3.7.5.3
+    - python >=3.6
+    - scipy >=0.19
+    - pytz
+    - fftw3
+    - gdbm
+    - setuptools
+    - python-casacore
+  run:
+    - aipy >=3.0.1
+    - astropy >=3.0
+    - numpy >=1.7
+    - pyephem >=3.7.5.3
+    - python >=3.6
+    - scipy >=0.19
+    - pytz
+    - fftw3
+    - gdbm
+
+test:
+  requires:
+    - matplotlib >=1.1
+  imports:
+    - lsl
+  commands:
+    - python -m unittest tests
+
+about:
+  home: https://github.com/lwa-project/lsl
+  license: GPL2
+  license_family: GPL
+  license_file: LICENSE
+  summary: 'Tools for reading, format shifting, and analyzing data from the Long Wavelength Array.'
+
+extra:
+  recipe-maintainers:
+    - jaycedowell
