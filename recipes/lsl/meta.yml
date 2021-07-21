@@ -24,10 +24,10 @@ requirements:
     - python >=3.6
     - scipy >=0.19
     - pytz
-    - fftw3
+    - fftw3f
     - gdbm
     - setuptools
-    - python-casacore
+    
   run:
     - aipy >=3.0.1
     - astropy >=3.0
@@ -36,8 +36,10 @@ requirements:
     - python >=3.6
     - scipy >=0.19
     - pytz
-    - fftw3
+    - fftw3f
     - gdbm
+    - python-casacore
+    - beautifulsoup4
 
 test:
   requires:
